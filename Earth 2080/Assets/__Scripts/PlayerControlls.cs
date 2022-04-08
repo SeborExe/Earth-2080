@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class PlayerControlls : MonoBehaviour
 {
+    [Header("Player movement")]
     [SerializeField] float controllSpeed = 20f;
+
+    [Header("Player ship rotation params")]
     [SerializeField] float positionPitchFactor = 2f;
     [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float positionYawFactor = 2.5f;
     [SerializeField] float controlRawFactor = -20f;
 
+    [Header("Ship elements")]
     [SerializeField] GameObject[] lasers;
 
     float xThrow, yThrow;
@@ -50,27 +54,20 @@ public class PlayerControlls : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            ActiveLasers();
+            SetLaserActive(true);
         }
         else
         {
-            DesactiveteLasers();
+            SetLaserActive(false);
         }
     }
 
-    private void ActiveLasers()
+    private void SetLaserActive(bool shouldShoot)
     {
         foreach (GameObject laser in lasers)
         {
-            laser.SetActive(true);
-        }
-    }
-
-    private void DesactiveteLasers()
-    {
-        foreach (GameObject laser in lasers)
-        {
-            laser.SetActive(false);
+            var emission = laser.GetComponent<ParticleSystem>().emission;
+            emission.enabled = shouldShoot;
         }
     }
 }
