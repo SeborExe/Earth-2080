@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,15 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField] float positionYawFactor = 2.5f;
     [SerializeField] float controlRawFactor = -20f;
 
+    [SerializeField] GameObject[] lasers;
+
     float xThrow, yThrow;
 
     void Update()
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
     }
 
     private void ProcessTranslation()
@@ -29,7 +33,7 @@ public class PlayerControlls : MonoBehaviour
 
         float yoffset = yThrow * Time.deltaTime * controllSpeed;
         float newYpos = transform.localPosition.y + yoffset;
-        float newYposClamped = Mathf.Clamp(newYpos, -5, 8);
+        float newYposClamped = Mathf.Clamp(newYpos, -8, 8);
 
         transform.localPosition = new Vector3(newXposClamped, newYposClamped, transform.localPosition.z);
     }
@@ -40,5 +44,33 @@ public class PlayerControlls : MonoBehaviour
         float yaw = transform.localPosition.x * positionYawFactor;
         float roll = xThrow * controlRawFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void ProcessFiring()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            ActiveLasers();
+        }
+        else
+        {
+            DesactiveteLasers();
+        }
+    }
+
+    private void ActiveLasers()
+    {
+        foreach (GameObject laser in lasers)
+        {
+            laser.SetActive(true);
+        }
+    }
+
+    private void DesactiveteLasers()
+    {
+        foreach (GameObject laser in lasers)
+        {
+            laser.SetActive(false);
+        }
     }
 }
