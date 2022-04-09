@@ -759,7 +759,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exposionParticle: {fileID: 3200836327345539238, guid: ddc58037713fcd440b241d99488ddcb9, type: 3}
+  hitParticles: {fileID: 3200836327345539238, guid: fb99c2486d96b994aa7c891bb006b2e4, type: 3}
   score: 10
+  hitPoints: 8
 --- !u!1 &1907046659
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exposionParticle: {fileID: 3200836327345539238, guid: ddc58037713fcd440b241d99488ddcb9, type: 3}
+  hitParticles: {fileID: 3200836327345539238, guid: fb99c2486d96b994aa7c891bb006b2e4, type: 3}
   score: 10
+  hitPoints: 4
 --- !u!1001 &6514777215545557591
 PrefabInstance:
   m_ObjectHideFlags: 0
