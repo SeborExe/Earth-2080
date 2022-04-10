@@ -17,7 +17,6 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<PlayerControlls>().enabled = false;
 
         GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<BoxCollider>().enabled = false;
         ExplosionParticle.Play();
 
         yield return new WaitForSeconds(1f);
