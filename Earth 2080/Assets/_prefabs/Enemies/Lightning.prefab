@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283563a190d38a54fa403cc5a39d78dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exposionParticle: {fileID: 3200836327345539238, guid: ddc58037713fcd440b241d99488ddcb9, type: 3}
+  explosionEffect: {fileID: 3200836327345539238, guid: ddc58037713fcd440b241d99488ddcb9, type: 3}
   hitParticles: {fileID: 3200836327345539238, guid: fb99c2486d96b994aa7c891bb006b2e4, type: 3}
   score: 50
   hitPoints: 14

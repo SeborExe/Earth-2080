@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject exposionParticle, hitParticles;
+    [SerializeField] GameObject explosionEffect, hitParticles;
     [SerializeField] int score = 10;
     [SerializeField] int hitPoints = 2;
     int currentHitPoints;
@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         currentHitPoints--;
-        scoreBoard.IncreaseScore(score);
 
         var particle = Instantiate(hitParticles, transform.position, Quaternion.identity);
         Destroy(particle, 1f);
@@ -34,7 +33,8 @@ public class Enemy : MonoBehaviour
 
     void DestroyEnemy()
     {
-        var particle = Instantiate(exposionParticle, transform.position, Quaternion.identity);
+        scoreBoard.IncreaseScore(score);
+        var particle = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         Destroy(particle, 2f);
         Destroy(this.gameObject);
     }
