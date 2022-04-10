@@ -12,7 +12,10 @@ public class Enemy : MonoBehaviour
     ScoreBoard scoreBoard;
 
     private void Start()
-    {
+    {   
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+
         scoreBoard = FindObjectOfType<ScoreBoard>();
         currentHitPoints = hitPoints;
     }
