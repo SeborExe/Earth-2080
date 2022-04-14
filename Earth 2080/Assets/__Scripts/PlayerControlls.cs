@@ -7,6 +7,7 @@ public class PlayerControlls : MonoBehaviour
 {
     [Header("Player movement")]
     [SerializeField] float controllSpeed = 20f;
+    public Joystick joystick;
 
     [Header("Player ship rotation params")]
     [SerializeField] float positionPitchFactor = 2f;
@@ -19,6 +20,8 @@ public class PlayerControlls : MonoBehaviour
 
     float xThrow, yThrow;
 
+    public bool shoot { get; set; }
+
     void Update()
     {
         ProcessTranslation();
@@ -28,8 +31,8 @@ public class PlayerControlls : MonoBehaviour
 
     private void ProcessTranslation()
     {
-        xThrow = Input.GetAxis("Horizontal");
-        yThrow = Input.GetAxis("Vertical");
+        xThrow = joystick.Horizontal;
+        yThrow = joystick.Vertical;
 
         float xoffset = xThrow * Time.deltaTime * controllSpeed;
         float newXpos = transform.localPosition.x + xoffset;
@@ -52,7 +55,7 @@ public class PlayerControlls : MonoBehaviour
 
     void ProcessFiring()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") || shoot)
         {
             SetLaserActive(true);
         }
